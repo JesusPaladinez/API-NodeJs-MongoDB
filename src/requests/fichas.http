@@ -1,0 +1,32 @@
+###
+GET http://localhost:9000/ReconocimientoFacial/fichas/mostrarFichas HTTP/1.1
+
+###
+GET http://localhost:9000/ReconocimientoFacial/fichas/mostrarFicha/id HTTP/1.1
+
+###
+POST http://localhost:9000/ReconocimientoFacial/fichas/crearFicha HTTP/1.1
+Content-Type: application/json
+
+{
+    "numeroFicha": "",
+    "aprendicesActuales": ,
+    "aprendicesMatriculados": ,
+    "jornada": "",
+    "tipoFormacion": ""
+}
+
+###
+PUT http://localhost:9000/ReconocimientoFacial/fichas/actualizarFicha/id HTTP/1.1
+Content-Type: application/json
+
+{
+    "numeroFicha": "",
+    "aprendicesActuales": ,
+    "aprendicesMatriculados": ,
+    "jornada": "",
+    "tipoFormacion": ""
+}
+
+###
+DELETE http://localhost:9000/ReconocimientoFacial/fichas/eliminarFicha/6604b7ca356d0ca6adb3c851 HTTP/1.1

@@ -1,0 +1,26 @@
+###
+GET http://localhost:9000/ReconocimientoFacial/objetos/mostrarObjetos HTTP/1.1
+
+###
+GET http://localhost:9000/ReconocimientoFacial/objetos/mostrarObjeto/id HTTP/1.1
+
+###
+POST http://localhost:9000/ReconocimientoFacial/objetos/crearObjeto HTTP/1.1
+Content-Type: application/json
+
+{
+    "marca": "",
+    "codigo": ""
+}
+
+###
+PUT http://localhost:9000/ReconocimientoFacial/objetos/actualizarObjeto/id HTTP/1.1
+Content-Type: application/json
+
+{    
+    "marca": "",
+    "codigo": ""
+}
+
+###
+DELETE http://localhost:9000/ReconocimientoFacial/objetos/eliminarObjeto/id HTTP/1.1
