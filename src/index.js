@@ -14,9 +14,9 @@ const port = process.env.PORT || 9000;
 
 // Middleware
 app.use(express.json());
-app.use("/ReconocimientoFacial/usuarios", rutasUsuarios);
-app.use("/ReconocimientoFacial/fichas", rutasFichas);
-app.use("/ReconocimientoFacial/objetos", rutasObjetos);
+app.use("/api", rutasUsuarios);
+app.use("/api", rutasFichas);
+app.use("/api", rutasObjetos);
 
 // Ruta principal
 app.get("/", (req, res) => {

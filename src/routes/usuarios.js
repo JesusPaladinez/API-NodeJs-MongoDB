@@ -7,7 +7,7 @@ const router = express.Router();
 const usuariosSchema = require("../models/usuarios");
 
 // Mostrar todos los usuarios
-router.get("/mostrarUsuarios", (req, res) => {
+router.get("/usuario", (req, res) => {
   usuariosSchema
     .find() // Método para encontrar todos los usuarios
     .then((data) => res.json(data)) // Después se responde con los datos encontrados
@@ -15,7 +15,7 @@ router.get("/mostrarUsuarios", (req, res) => {
 });
 
 // Mostrar usuario
-router.get("/mostrarUsuario/:id", (req, res) => {
+router.get("/usuario/:id", (req, res) => {
   const { id } = req.params; // Se extrae el id desde los parametros
   usuariosSchema
     .findById(id) // Encontrar dato con un id
@@ -24,7 +24,7 @@ router.get("/mostrarUsuario/:id", (req, res) => {
 });
 
 // Crear usuario
-router.post("/crearUsuario", (req, res) => {
+router.post("/usuario", (req, res) => {
   const usuario = usuariosSchema(req.body); // Se crea el usuario con el esquema preestablecido
   usuario
     .save() // Se guarda el usuario en la base de datos
@@ -33,7 +33,7 @@ router.post("/crearUsuario", (req, res) => {
 });
 
 // Actualizar usuario
-router.put("/actualizarUsuario/:id", (req, res) => {
+router.put("/usuario/:id", (req, res) => {
   const { id } = req.params;
   const { nombre, apellidos, numeroDocumento, correoElectronico, genero } =
     req.body; // Se extraen los campos desde el cuerpo del esquema
@@ -49,7 +49,7 @@ router.put("/actualizarUsuario/:id", (req, res) => {
 });
 
 // Eliminar usuario
-router.delete("/eliminarUsuario/:id", (req, res) => {
+router.delete("/usuario/:id", (req, res) => {
   const { id } = req.params;
   usuariosSchema
     .deleteOne({ _id: id }) // Al método de eliminar se le pasa un objeto con el id

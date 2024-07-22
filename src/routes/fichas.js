@@ -8,7 +8,7 @@ const router = express.Router();
 const fichasSchema = require("../models/fichas");
 
 // Mostrar todas las fichas
-router.get("/mostrarFichas", (req, res) => {
+router.get("/ficha", (req, res) => {
     fichasSchema
     .find() // Método para encontrar todas las fichas
     .then((data) => res.json(data))
@@ -16,16 +16,16 @@ router.get("/mostrarFichas", (req, res) => {
 })
 
 // Mostrar una ficha en específico
-router.get("/mostrarFicha/:id", (req, res) => {
-    const { id } = req.params;
-    fichasSchema
+router.get("/ficha/:id", (req, res) => {
+  const { id } = req.params;
+  fichasSchema
     .findById(id) // Encontrar con el id
     .then((data) => res.json(data))
-    .catch((error) => res.json({mensaje: error}))
-})
+    .catch((error) => res.json({ mensaje: error }));
+});
 
 // Crear ficha
-router.post("/crearFicha", (req, res) => {
+router.post("/ficha", (req, res) => {
   const ficha = fichasSchema(req.body);
   ficha
     .save()
@@ -34,23 +34,40 @@ router.post("/crearFicha", (req, res) => {
 });
 
 // Actualizar ficha
-router.put("/actualizarFicha/:id", (req, res) => {
-    const { id } = req.params;
-    const { numeroFicha, aprendicesActuales, aprendicesMatriculados, jornada, tipoFormacion } = req.body;
-    fichasSchema
-    .updateOne({ _id: id }, { $set: {numeroFicha, aprendicesActuales, aprendicesMatriculados, jornada, tipoFormacion }})
+router.put("/ficha/:id", (req, res) => {
+  const { id } = req.params;
+  const {
+    numeroFicha,
+    aprendicesActuales,
+    aprendicesMatriculados,
+    jornada,
+    tipoFormacion,
+  } = req.body;
+  fichasSchema
+    .updateOne(
+      { _id: id },
+      {
+        $set: {
+          numeroFicha,
+          aprendicesActuales,
+          aprendicesMatriculados,
+          jornada,
+          tipoFormacion,
+        },
+      }
+    )
     .then((data) => res.json(data))
-    .catch((error) => res.json({mensaje: error}))
-})
+    .catch((error) => res.json({ mensaje: error }));
+});
 
 // Eliminar ficha
-router.delete("/eliminarFicha/:id", (req, res) => {
-    const { id } = req.params;
-    fichasSchema
+router.delete("/ficha/:id", (req, res) => {
+  const { id } = req.params;
+  fichasSchema
     .deleteOne({ _id: id })
     .then((data) => res.json(data))
-    .catch((error) => res.json({ mensaje: error }))
-})
+    .catch((error) => res.json({ mensaje: error }));
+});
 
 // Se exportan las rutas
 module.exports = router;
