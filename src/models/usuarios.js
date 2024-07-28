@@ -3,23 +3,15 @@ const mongoose = require("mongoose");
 
 // Se crea el esquema
 const usuariosSchema = mongoose.Schema({
-  nombre: {
+  name: {
     type: String,
     required: true,
   },
-  apellidos: {
+  email: {
     type: String,
     required: true,
   },
-  numeroDocumento: {
-    type: String,
-    required: true,
-  },
-  correoElectronico: {
-    type: String,
-    required: true,
-  },
-  genero: {
+  password: {
     type: String,
     required: true,
   },

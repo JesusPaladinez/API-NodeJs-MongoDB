@@ -35,13 +35,12 @@ router.post("/usuario", (req, res) => {
 // Actualizar usuario
 router.put("/usuario/:id", (req, res) => {
   const { id } = req.params;
-  const { nombre, apellidos, numeroDocumento, correoElectronico, genero } =
-    req.body; // Se extraen los campos desde el cuerpo del esquema
+  const { name, email, password } = req.body; // Se extraen los campos desde el cuerpo del esquema
   usuariosSchema
     .updateOne(
       { _id: id },
       {
-        $set: { nombre, apellidos, numeroDocumento, correoElectronico, genero },
+        $set: { name, email, password },
       }
     ) // Al método de actualizar se le pasan dos parametros, el id y los campos que se van a cambiar
     .then((data) => res.json(data))
