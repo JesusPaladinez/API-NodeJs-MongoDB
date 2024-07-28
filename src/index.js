@@ -1,6 +1,7 @@
 // Se importan los módulos
 const express = require("express"); // El framework express sirve para crear servidores y manejar rutas
 const mongoose = require("mongoose"); // El módulo mongoose sirve para interactuar con dbs
+const cors = require("cors"); // Permite las solicitudes CORS
 require("dotenv").config(); // Se cargan las variables de entorno definidas en el archivo .env
 
 // Se importan las rutas
@@ -10,7 +11,7 @@ const rutasObjetos = require("./routes/objetos");
 
 const app = express();
 
-app.use(cors()); // Permitir todas las solicitudes CORS
+app.use(cors()); 
 
 const port = process.env.PORT || 9000;
 
