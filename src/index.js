@@ -10,6 +10,8 @@ const rutasObjetos = require("./routes/objetos");
 
 const app = express();
 
+app.use(cors()); // Permitir todas las solicitudes CORS
+
 const port = process.env.PORT || 9000;
 
 // Middleware
@@ -20,7 +22,7 @@ app.use("/api", rutasObjetos);
 
 // Ruta principal
 app.get("/", (req, res) => {
-  res.send("Bienvenido a la API del proyecto de Reconocimiento Facial");
+  res.send("Bienvenido a la aplicación del proyecto de Reconocimiento Facial");
 });
 
 // Conexión a MongoDB
