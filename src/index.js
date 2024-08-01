@@ -2,28 +2,31 @@
 const express = require("express"); // El framework express sirve para crear servidores y manejar rutas
 const mongoose = require("mongoose"); // El módulo mongoose sirve para interactuar con dbs
 const cors = require("cors"); // Permite las solicitudes CORS
+const multer = require("multer"); // Manejo de imágenes
+const path = require("path"); // Manejo de imágenes
 require("dotenv").config(); // Se cargan las variables de entorno definidas en el archivo .env
 
 // Se importan las rutas
 const rutasUsuarios = require("./routes/usuarios");
-const rutasFichas = require("./routes/fichas");
-const rutasObjetos = require("./routes/objetos");
+const rutasCategorias = require("./routes/categorias");
+const rutasProductos = require("./routes/productos");
 
 const app = express();
 
 app.use(cors()); 
+app.use(express.json()); 
 
 const port = process.env.PORT || 9000;
 
 // Middleware
 app.use(express.json());
 app.use("/api", rutasUsuarios);
-app.use("/api", rutasFichas);
-app.use("/api", rutasObjetos);
+app.use("/api", rutasCategorias);
+app.use("/api", rutasProductos);
 
 // Ruta principal
 app.get("/", (req, res) => {
-  res.send("Bienvenido a la aplicación del proyecto de Reconocimiento Facial");
+  res.send("API de NodeJs.");
 });
 
 // Conexión a MongoDB

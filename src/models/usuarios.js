@@ -1,6 +1,6 @@
 // Se importa la librería de Mongo, para interactuar con la db
 const mongoose = require("mongoose");
-
+  
 // Se crea el esquema
 const usuariosSchema = mongoose.Schema({
   name: {
