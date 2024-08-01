@@ -6,7 +6,6 @@ const router = express.Router();
 // Se importa el esquema correspondiente
 const productosSchema = require("../models/productos");
 
-
 // Pasar multer como argumento
 module.exports = (upload) => {
   // Mostrar todos los productos
@@ -64,6 +63,6 @@ module.exports = (upload) => {
       .catch((error) => res.json({ mensaje: error }));
   });
 
-  // Se exportan las rutas
-  module.exports = router;
-}
+  // Devolver el enrutador configurado
+  return router;
+};

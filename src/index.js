@@ -6,17 +6,29 @@ const multer = require("multer"); // Manejo de imágenes
 const path = require("path"); // Manejo de imágenes
 require("dotenv").config(); // Se cargan las variables de entorno definidas en el archivo .env
 
+const app = express();
+
+app.use(cors());
+app.use(express.json());
+
+const port = process.env.PORT || 9000;
+
+// Configuración de multer
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, "uploads/");
+  },
+  filename: function (req, file, cb) {
+    cb(null, Date.now() + "-" + file.originalname);
+  },
+});
+
+const upload = multer({ storage: storage });
+
 // Se importan las rutas
 const rutasUsuarios = require("./routes/usuarios");
 const rutasCategorias = require("./routes/categorias");
-const rutasProductos = require("./routes/productos");
-
-const app = express();
-
-app.use(cors()); 
-app.use(express.json()); 
-
-const port = process.env.PORT || 9000;
+const rutasProductos = require("./routes/productos")(upload);
 
 // Middleware
 app.use(express.json());
