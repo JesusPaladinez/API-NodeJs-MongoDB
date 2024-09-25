@@ -1,17 +1,13 @@
 // Se importa la librería de Mongo, para interactuar con la db
 const mongoose = require("mongoose");
-  
+
 // Se crea el esquema
 const usuariosSchema = mongoose.Schema({
-  name: {
+  nombre: {
     type: String,
     required: true,
   },
-  email: {
-    type: String,
-    required: true,
-  },
-  password: {
+  rol: {
     type: String,
     required: true,
   },
